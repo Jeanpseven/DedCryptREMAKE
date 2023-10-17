@@ -1,0 +1,41 @@
+# Função para descriptografar código Bash
+def descriptografar_bash(conteudo):
+    # Exemplo de descriptografia para Bash (substituição de caracteres simples)
+    conteudo = conteudo.replace('echo(', 'eval(')
+    return conteudo
+
+# Função para descriptografar código Python
+def descriptografar_python(conteudo):
+    # Exemplo de descriptografia para Python (substituição de caracteres simples)
+    conteudo = conteudo.replace('print(', 'exec(')
+    return conteudo
+
+# Nome do arquivo de entrada e saída
+nome_arquivo_entrada = "arquivo_entrada.txt"
+nome_arquivo_saida = "arquivo_saida.txt"
+
+# Abrir o arquivo de entrada para leitura
+with open(nome_arquivo_entrada, 'r') as arquivo_entrada:
+    # Ler o conteúdo do arquivo de entrada
+    conteudo = arquivo_entrada.read()
+
+# Menu de escolha
+print("Escolha a operação que deseja realizar:")
+print("1. Descriptografar código Bash")
+print("2. Descriptografar código Python")
+
+opcao = input("Digite o número da opção desejada: ")
+
+if opcao == "1":
+    conteudo = descriptografar_bash(conteudo)
+elif opcao == "2":
+    conteudo = descriptografar_python(conteudo)
+else:
+    print("Opção inválida. Nenhuma descriptografia será feita.")
+
+# Abrir o arquivo de saída para escrita
+with open(nome_arquivo_saida, 'w') as arquivo_saida:
+    # Escrever o novo conteúdo no arquivo de saída
+    arquivo_saida.write(conteudo)
+
+print("Descriptografia concluída. Verifique o arquivo de saída:", nome_arquivo_saida)
